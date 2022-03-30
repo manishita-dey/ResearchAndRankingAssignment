@@ -46,7 +46,7 @@ def extract_close_price(start_date: str, end_date: str, email_mode : bool):
 
     # Returning data according to email_mode
     if email_mode == "True":
-        return merged_df.to_excel("result_1.xlsx")
+        return merged_df.to_excel("result_3.xlsx")
     else:
         result_df = merged_df.swapaxes('index', 'columns')
         result_dict = result_df.to_dict()
@@ -59,7 +59,7 @@ def extract_close_price(start_date: str, end_date: str, email_mode : bool):
 # Input statements
 start_date = str(input("The start date to calculate(YYYY-MM-DD)"))
 end_date = str(input("The end date to calculate (YYYY-MM-DD)"))
-email = bool(input("True/False"))
+email = input("True/False")
 
 print(extract_close_price(start_date, end_date, email))
 
