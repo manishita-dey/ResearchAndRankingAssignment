@@ -45,7 +45,7 @@ def extract_close_price(start_date: str, end_date: str, email_mode : bool):
     merged_df["performance"] = round(((merged_df["close_end"] - merged_df["close_start"]) / merged_df['close_start']) * 100, 2).astype(str) + '%'
 
     # Returning data according to email_mode
-    if email_mode:
+    if email_mode == "True":
         return merged_df.to_excel("result_1.xlsx")
     else:
         result_df = merged_df.swapaxes('index', 'columns')
@@ -54,8 +54,14 @@ def extract_close_price(start_date: str, end_date: str, email_mode : bool):
         return result_lst
 
 
-print(extract_close_price('2022-01-09', '2022-01-29', True))
-print(extract_close_price('2022-01-09', '2022-01-29', False))
+# print(extract_close_price('2022-01-09', '2022-01-29', True))
+# print(extract_close_price('2022-01-09', '2022-01-29', False))
+# Input statements
+start_date = str(input("The start date to calculate(YYYY-MM-DD)"))
+end_date = str(input("The end date to calculate (YYYY-MM-DD)"))
+email = bool(input("True/False"))
+
+print(extract_close_price(start_date, end_date, email))
 
 
 
